@@ -6,7 +6,8 @@
 
 ## 套件
 - telethon
-    - `pip3 install telethon`
+    - `sudo pip3 install telethon`
+    - 由於需要寫進 `rc.local` 檔案中讓程式在開機時自動執行，因此需要用 sudo 安裝
 
 ## 使用
 ### Step 1 : 註冊應用並取得操作資訊
@@ -30,3 +31,10 @@
     - 輸入電話號碼後會收到 telegram 寄送的驗證碼
     - 輸入驗證碼後，若無錯誤即可查看 Telegram，檢查是否收到 IP
 
+## Step 4 : 設定開機自動執行
+- 編輯 `/etc/rc.local` 檔案
+    - 在 `printf` 的下面新增兩行
+    - `cd /home/pi` 切換執行路徑，若路徑不同請自行調整指令
+    - `/usr/bin/python3 /home/pi/send_IP_TG.py &` 執行程式
+    - 範例如下圖
+    ![](https://i.imgur.com/E8P6y9k.png)
